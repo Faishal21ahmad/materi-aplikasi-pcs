@@ -17,6 +17,15 @@ class AboutFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_about, container, false)
+
+        val btnLogout = view.findViewById(R.id.btnLogout) as Button
+        btnLogout.setOnClickListener{
+            sessionManager.clearSession()
+
+            val moveIntent = Intent(activity, LoginActivity::class.java)
+            startActivity(moveIntent)
+            activity?.finish()
+        }
         return view
     }
 
